@@ -1,0 +1,30 @@
+@use '../global';
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: global.$gray-500;
+    color: global.$gray-100;
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: global.$primary-400;
+}
