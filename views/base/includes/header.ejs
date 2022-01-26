@@ -1,7 +1,16 @@
-<header class="header-main">
-    <div class="logo"><a href="/">Damiano's</a></div>
-
-    <nav>
-        <%- include('nav-items') %> 
-    </nav>
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="logo">
+                <a href="/">Damiano's</a>
+            </div>
+            <button type="button" class="nav-toggler">
+                <!-- <img src="/images/cart.png" alt="cart"> -->
+                <span></span>
+            </button>
+            <nav class="nav">
+                <%- include('nav-items') %> 
+            </nav>
+        </div>
+    </div>    
 </header>

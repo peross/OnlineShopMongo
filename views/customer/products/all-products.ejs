@@ -2,14 +2,16 @@
 </head>
 <body>
     <%- include('../../base/includes/header') %> 
+    <%- include('../../base/includes/hero') %>
     <main>
         <h1>All Products</h1>
         <ul>
-            
+            <% for(const product of products) { %>
                 <li>
-                    
+                    <%- include('../../base/includes/product-item', {product: product}) %>
                 </li>
+            <% } %> 
         </ul>
     </main>
-</body>
-</html>
+
+    <%- include('../../base/includes/footer') %>

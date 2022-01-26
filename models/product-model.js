@@ -15,10 +15,12 @@ class Product {
 
     static async findAllProducts(){
         const query = `select * from products`;
-        const products = await db.query(query);
-        return products.map((productDocument) => {
-            return new Product(productDocument);
-        });
+        const [products] = await db.query(query);
+
+        return products;
+        // return products.map((productDocument) => {
+        //     return new Product(productDocument);
+        // });
     }
 }
 

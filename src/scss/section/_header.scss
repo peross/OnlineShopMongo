@@ -1,0 +1,140 @@
+@use '../global/' as global;
+
+.header{
+    padding: 1.2rem 0;
+    // background-color: global.$dark-light;
+    // height: 6rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+
+    &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: global.$dark-light;
+        box-shadow: global.$shadow;
+        z-index: -1;
+        transition: transform .5s ease;
+        transform: translateY(-100%);
+    }
+
+    &.sticky{
+        &:before{
+            transform: translateY(0);
+        }
+    }
+
+    .row{
+        justify-content: space-between;
+        align-items: center;
+        .logo{
+            padding: 0 1.5rem;
+            min-height: 3.4rem;
+            display: flex;
+            align-items: center;
+            a{
+                color: global.$white; 
+            }
+        }
+        .nav-toggler{
+            width: 4.4rem;
+            height: 3.4rem;
+            margin-right: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background-color: transparent;
+
+            &.active{
+                position: absolute;
+                z-index: 1;
+                right: 0;
+                transition: all .5s ease;
+                transform: translateX(-20rem);
+
+                span{
+                    background-color: transparent;
+                    transition: background-color .5s ease;
+
+                    &:before{
+                        transform: rotate(45deg);
+                        transition: transform .5s ease;
+                    }
+
+                    &:after{
+                        transform: rotate(-45deg);
+                        transition: transform .5s ease;
+                    }
+                }
+            }
+
+            span{
+                position: relative;
+                height: .2rem;
+                width: 3rem;
+                display: block;
+                background-color: global.$white;
+
+                &:before,
+                &:after{
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: global.$white;
+                }
+
+                &:before{
+                    transform: translateY(-.5rem);
+                }
+
+                &:after{
+                    transform: translateY(.5rem);
+                }
+            }
+        }
+
+        .nav{
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 28rem;
+            height: 100%;
+            background-color: global.$dark-light;
+            box-shadow: global.$shadow;
+            overflow-y: auto;
+            padding: 8rem 0 4rem;
+            transition: transform .5s ease;
+            transform: translateX(100%);
+
+            &.open{
+                transform: translateX(0);
+            }
+            ul{
+                li{
+                    a{
+                        display: block;
+                        font-size: 2.5rem;
+                        color: global.$white;
+                        padding: 1rem 3rem;
+                        transition: color .3s ease;
+
+                        &:hover{
+                            color: global.$main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

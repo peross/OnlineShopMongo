@@ -1,7 +1,10 @@
 @use '../global';
 
 *{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    outline: none;
 }
 
 html{
@@ -11,10 +14,8 @@ html{
 }
 
 body{
-    background-color: global.$gray-500;
-    color: global.$gray-100;
     font-size: 1.6rem;
-    margin: 0;
+    line-height: 1.5;
 }
 
 ul{
@@ -26,5 +27,14 @@ ul{
 a{
     text-decoration: none;
     cursor: pointer;
-    color: global.$primary-400;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    max-width: 1170px;
+    margin: auto;
 }
