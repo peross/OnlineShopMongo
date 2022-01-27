@@ -1,0 +1,53 @@
+@use '../global/' as global;
+
+.about-section{
+    background-color: global.$dark-light;
+
+    .about-text,
+    .about-img{
+        width: 50%;
+        padding: 0 1.5rem;
+    }
+
+    .about-text{
+        h3{
+            font-size: 3rem;
+            margin: 0 0 1.5rem;
+        }
+        p{
+            margin: 0 0 1.5rem;
+        }
+    }
+
+    .about-img{
+        position: relative;
+
+        &:before{
+            content: '';
+            position: absolute;
+            width: 10rem;
+            height: 10rem;
+            border: .3rem solid global.$main-color;
+            left: calc(50% - 5rem);
+            top: calc(50% - 7rem);
+            transform: translate(-50%, -65%);
+            animation: spinSquare 10s linear infinite;
+        }
+        h3{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-100%);
+            width: 50%;
+            max-width: 25rem;
+            text-align: center;
+            font-size: 3rem;
+            font-family: global.$cursive-font;
+            color: global.$dark-light;
+        }
+        img{
+            width: 100%;
+            border-radius: 1rem;
+        }
+    }
+}

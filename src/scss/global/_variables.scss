@@ -1,4 +1,5 @@
-@use 'colors';
+@use 'colors' as colors;
+@use 'fonts' as fonts;
 
 $space-1: .25rem;
 $space-2: .5rem;
@@ -52,5 +53,29 @@ $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
     &:hover{
         color: colors.$white;
         background-color: colors.$main-color;
+    }
+}
+
+.sec-padding{
+    padding: 8rem 0;
+}
+
+.section-title{
+    width: 100%;
+    padding: 0 1.5rem;
+    text-align: center;
+    margin-bottom: 6rem;
+
+    h2{
+        font-size: 3.5rem;
+        
+        &:before{
+            content: attr(data-title);
+            display: block;
+            font-size: 2.4rem;
+            color: colors.$main-color;
+            font-family: fonts.$cursive-font;
+            font-weight: 400;
+        }
     }
 }

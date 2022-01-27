@@ -1,0 +1,1 @@
+const menuTabs=document.querySelector(".menu-tabs");menuTabs.addEventListener("click",(t=>{if(t.target.classList.contains("menu-tab-item")&&!t.target.classList.contains("active")){const e=t.target.getAttribute("data-target");menuTabs.querySelector(".active").classList.remove("active"),t.target.classList.add("active"),console.log(e)}}));

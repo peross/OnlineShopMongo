@@ -1,0 +1,35 @@
+<section class="menu-section sec-padding" id="menu">
+    <div class="container">
+        <div class="row">
+            <div class="section-title">
+                <h2 data-title="Naručite odmah">Jelovnik</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="menu-tabs" id="menu">
+                <button type="button" class="menu-tab-item active" name="category" data-target="Doručak">Doručak</button>
+                <button type="button" class="menu-tab-item" data-target="Piletina">Piletina</button>
+                <button type="button" class="menu-tab-item" data-target="Teletina">Teletina</button>
+                <button type="button" class="menu-tab-item" data-target="Dimljena ćuretina">Dimljena ćuretina</button>
+                <button type="button" class="menu-tab-item" data-target="Svinjetina">Svinjetina</button>
+                <button type="button" class="menu-tab-item" data-target="Roštilj">Roštilj</button>
+                <button type="button" class="menu-tab-item" data-target="Pice">Pice</button>
+                <button type="button" class="menu-tab-item" data-target="Pite">Pite</button>
+                <button type="button" class="menu-tab-item" data-target="Obrok salate">Obrok salate</button>
+                <button type="button" class="menu-tab-item" data-target="Posni meni">Posni meni</button>
+                <button type="button" class="menu-tab-item" data-target="Obrok sendvič">Obrok sendvič</button>
+                <button type="button" class="menu-tab-item" data-target="Salate i prilozi">Salate i prilozi</button>
+                <button type="button" class="menu-tab-item" data-target="Desert">Desert</button>
+                <button type="button" class="menu-tab-item" data-target="Bezalkoholna pića">Bezalkoholna pića</button>
+                <button type="button" class="menu-tab-item" data-target="Alkoholna pića">Alkoholna pića</button>
+            </div>
+        </div>
+
+        <div class="row menu-tab-content">
+            <% for(const product of products) { %> 
+                <%- include('menu-item', {product: product}) %>
+            <% } %> 
+        </div>
+    </div>
+</section>

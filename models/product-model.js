@@ -13,9 +13,10 @@ class Product {
         }
     }
 
-    static async findAllProducts(){
-        const query = `select * from products`;
-        const [products] = await db.query(query);
+    static async findAllProducts(categoryName){
+        const query = `SELECT products.title, products.summary, products.description, products.cijena, products.image, category.name FROM products INNER JOIN category ON products.category_id = category.category_id WHERE category.name = (?)`;
+
+        const [products] = await db.query(query, categoryName);
 
         return products;
         // return products.map((productDocument) => {

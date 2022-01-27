@@ -1,0 +1,74 @@
+@use '../global/' as global;
+
+.menu-section{
+    background-color: global.$dark-light;
+
+    .section-title{
+        margin-bottom: 4rem;
+    }
+
+    .menu-tabs{
+        padding: 0 1.5rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 3rem;
+
+        .menu-tab-item{
+            font-size: 1.8rem;
+            font-family: inherit;
+            border: none;
+            background-color: transparent;
+            font-weight: 500;
+            color: global.$white;
+            cursor: pointer;
+            transition: color .3s ease;
+            margin: 0 1rem 1rem;
+
+            &:hover{
+                color: global.$main-color;
+            }
+
+            &.active{
+                color: global.$main-color;
+            }
+        }
+    }
+
+    .menu-tab-content{
+        .menu-item{
+            position: relative;
+            width: 50%;
+            padding: 2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:after{
+                content: '';
+                position: absolute;
+                left: 1.5rem;
+                right: 1.5rem;
+                bottom: 0;
+                border-bottom: .1rem dashed global.$white-light;
+            }
+
+            &-title{
+                display: flex;
+                // align-items: center;
+                flex-direction: column;
+                cursor: context-menu;
+                max-width: calc(100% - 8rem);
+            }
+
+            &-price{
+                color: global.$main-color;
+                font-weight: bold;
+            }
+
+            img{
+                max-width: 10rem;
+                margin-right: 1.5rem;
+            }
+        }
+    }
+}
