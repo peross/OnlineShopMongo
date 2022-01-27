@@ -1,0 +1,57 @@
+@use '../global/' as global;
+
+.hero-section{
+    position: relative;
+    overflow: hidden;
+
+    &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.7);
+        z-index: -1;
+    }
+
+    .hero-bg{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background-image: url('/images/home-bg.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        animation: zoomInOut 20s ease infinite;
+    }
+
+    .min-vh-100{
+        padding: 10rem 0;
+    }
+
+    .row{
+        .hero-text{
+            padding: 0 1.5rem;
+            max-width: 70rem;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+
+            h1{
+                font-size: 6rem;
+                font-family: 'Dancing Script', sans-serif;
+                font-weight: 700;
+                line-height: 7.5rem;
+                margin: 0 0 0.5rem;
+            }
+
+            p{
+                margin: 0 0 3rem;
+            }
+        }
+    }
+}

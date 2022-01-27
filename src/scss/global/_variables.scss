@@ -1,3 +1,5 @@
+@use 'colors';
+
 $space-1: .25rem;
 $space-2: .5rem;
 $space-4: 1rem;
@@ -8,3 +10,47 @@ $border-radius-small: .4rem;
 $border-radius-medium: .6rem;
 
 $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    max-width: 1170px;
+    margin: auto;
+}
+
+.min-vh-100{
+    min-height: 100vh;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.btn{
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: transparent;
+    border-radius: 3rem;
+    border: none;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: all .3s ease;
+    font-size: 1.6rem;
+    cursor: pointer;
+    font-family: inherit;
+    color: colors.$main-color;
+    line-height: 1.5;
+    user-select: none;
+}
+
+.btn-default{
+    border: .2rem solid colors.$main-color;
+
+    &:hover{
+        color: colors.$white;
+        background-color: colors.$main-color;
+    }
+}

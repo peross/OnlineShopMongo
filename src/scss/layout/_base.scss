@@ -1,4 +1,4 @@
-@use '../global';
+@use '../global' as global;
 
 *{
     margin: 0;
@@ -16,6 +16,7 @@ html{
 body{
     font-size: 1.6rem;
     line-height: 1.5;
+    color: global.$white-light;
 }
 
 ul{
@@ -29,12 +30,12 @@ a{
     cursor: pointer;
 }
 
-.row{
-    display: flex;
-    flex-wrap: wrap;
+h1{
+    font-weight: 700;
+    color: global.$white;
 }
 
-.container{
-    max-width: 1170px;
-    margin: auto;
+h2{
+    font-weight: 600;
+    color: global.$white;
 }
