@@ -1,0 +1,12 @@
+@use '../global/' as global;
+
+.not-found{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p{
+        margin: 1rem 0;
+    }
+}

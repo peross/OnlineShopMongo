@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="menu-tabs" id="menu">
-                <button type="button" class="menu-tab-item active" name="category" data-target="Doručak">Doručak</button>
+                <button type="button" class="menu-tab-item active" data-target="Doručak" id="defaultCategory">Doručak</button>
                 <button type="button" class="menu-tab-item" data-target="Piletina">Piletina</button>
                 <button type="button" class="menu-tab-item" data-target="Teletina">Teletina</button>
                 <button type="button" class="menu-tab-item" data-target="Dimljena ćuretina">Dimljena ćuretina</button>
@@ -27,9 +27,7 @@
         </div>
 
         <div class="row menu-tab-content">
-            <% for(const product of products) { %> 
-                <%- include('menu-item', {product: product}) %>
-            <% } %> 
+            
         </div>
     </div>
 </section>
