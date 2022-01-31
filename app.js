@@ -11,6 +11,7 @@ const notFoundMiddleware = require('./middlewares/not-found');
 //Routes
 const baseRoutes = require('./routes/base-routes');
 const productRoutes = require('./routes/products-routes');
+const authRoutes = require('./routes/auth-routes');
 
 //Acitvate EJS view engine
 app.set('view engine', 'ejs');
@@ -26,6 +27,7 @@ app.use(addCsrfTokenMiddleware);
 
 app.use(baseRoutes);
 app.use(productRoutes);
+app.use(authRoutes);
 
 app.use(notFoundMiddleware);
 

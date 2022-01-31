@@ -1,0 +1,62 @@
+@use '../global/' as global;
+
+.team-section{
+    background-color: global.$dark;
+    .team-item{
+        position: relative;
+        width: calc(100% / 3);
+        padding: 0 1.5rem;
+
+        @include global.tablet{
+            width: 50%;
+            margin-bottom: 7.5rem;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+
+        @include global.mobile{
+            width: 100%;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+
+        &:hover{
+            transform: skewY(2deg);
+            .team-item-info{
+                transform: translateY(-1.5rem);
+                background-color: global.$main-color;
+                p{
+                    color: global.$white;
+                }
+            }
+        }
+
+       img{
+           width: 100%;
+           border-radius: .8rem;
+           transition: transform .3s ease;
+       }
+
+       &-info{
+           position: absolute;
+           left: 3rem;
+           right: 3rem;
+           bottom: 0;
+           transform: translateY(50%);
+           background-color: global.$dark-light;
+           border-radius: .8rem;
+           padding: 1.5rem;
+           text-align: center;
+           transition: all .3s ease;
+           pointer-events: none;
+
+           h3{
+               font-weight: bold;
+           }
+       }
+    }
+}

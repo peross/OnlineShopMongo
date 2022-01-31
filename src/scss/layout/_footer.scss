@@ -1,0 +1,52 @@
+@use '../global/' as global;
+
+.footer{
+    position: relative;
+    padding: 8rem 0 0;
+    background-color: global.$white;
+    background-image: url('/images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+
+    &:before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.7);
+        z-index: -1;
+    }
+
+    &-item{
+        width: calc(100% / 3);
+        padding: 0 1.5rem;
+        text-align: center;
+
+        @include global.tablet{
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        img{
+            width: 2.8rem;
+            margin: 0 .5rem;
+
+            &:hover{
+                background: global.$main-color;
+                border-radius: .5rem;
+            }
+        }
+    }
+
+    .copyright{
+        width: 100%;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        margin: 8rem 0 0;
+        border-top: .1rem solid global.$white-light;
+    }
+}

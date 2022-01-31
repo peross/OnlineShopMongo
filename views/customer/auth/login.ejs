@@ -1,0 +1,21 @@
+<%- include('../../base/includes/head', {pageTitle: 'Prijavi se'}) %>
+</head>
+<body>
+    <%- include('../../base/includes/header') %> 
+    <div class="login-container sec-padding">
+        <h1>Prijavite se</h1>
+        <form action="">
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="input-field">
+                <label for="password">Lozinka</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <input type="submit" value="Prijavi se" class="btn btn-default">
+            <div class="sign-up">
+               Nemate nalog? <a href="/signup">Registruj se</a>
+            </div>
+        </form>
+    </div>

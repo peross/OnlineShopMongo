@@ -1,0 +1,45 @@
+<%- include('../../base/includes/head', {pageTitle: 'Registruj se'}) %>
+</head>
+<body>
+    <%- include('../../base/includes/header') %> 
+    <div class="sign-up-container sec-padding">
+        <h1>Registruj se</h1>
+        <form action="">
+            <div class="input-field">
+                <label for="name">Ime</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="input-field">
+                <label for="surname">Prezime</label>
+                <input type="text" name="surname" id="surname">
+            </div>
+            <div class="input-field">
+                <label for="street">Ulica</label>
+                <input type="text" name="street" id="street">
+            </div>
+            <div class="input-field">
+                <label for="postal">Poštanski broj</label>
+                <input type="text" name="postal" id="postal">
+            </div>
+            <div class="input-field">
+                <label for="city">Grad</label>
+                <input type="text" name="city" id="city">
+            </div>
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="input-field">
+                <label for="confirm-email">Potvrdi email</label>
+                <input type="email" name="confirm-email" id="confirm-email">
+            </div>
+            <div class="input-field">
+                <label for="password">Lozinka</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <input type="submit" value="Prijavi se" class="btn btn-default">
+            <div class="sign-up">
+               Imate nalog? <a href="/login">Prijavi se</a>
+            </div>
+        </form>
+    </div>

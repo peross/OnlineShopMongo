@@ -1,7 +1,13 @@
 @use 'layout/base';
 
+@use 'layout/header';
+
 @use 'section/not-found';
-@use 'section/header';
 @use 'section/hero';
 @use 'section/about';
 @use 'section/menu';
+@use 'section/login';
+@use 'section/signup';
+@use 'section/team';
+
+@use 'layout/footer';
