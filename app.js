@@ -2,6 +2,14 @@ const path = require('path');
 
 const express = require('express');
 
+const db = require('./data/database');
+
+let port = 3000;
+
+if(process.env.PORT){
+    port = process.env.PORT;
+}
+
 const app = express();
 
 //Custom middlewares
@@ -31,4 +39,9 @@ app.use(authRoutes);
 
 app.use(notFoundMiddleware);
 
-app.listen(3000);
+db.connectToDatabase().then(() => {
+    app.listen(port);
+}).catch((error) => {
+    console.log('Failed to connect to the database!');
+    console.log(error);
+});

@@ -14,25 +14,10 @@ class Product {
     }
 
     static async findAllProducts(categoryName){
-        const query = `SELECT products.title, products.summary, products.cijena, products.image, category.name FROM products INNER JOIN category ON products.category_id = category.category_id WHERE category.name = (?)`;
-
-        const [products] = await db.query(query, categoryName);
-
-        return products;
-        // return products.map((productDocument) => {
-        //     return new Product(productDocument);
-        // });
-    }
-
-    static async getCategoty(categoryName){
-        const query = `SELECT products.title, products.summary, products.cijena, products.image, category.name FROM products INNER JOIN category ON products.category_id = category.category_id WHERE category.name = (?)`;
-
-        const [products] = await db.query(query, categoryName);
-
-        return products;
-        // return products.map((productDocument) => {
-        //     return new Product(productDocument);
-        // });
+        const product = await db.getDb().collection('products').find({category: categoryName}).toArray();
+        return product.map((productDocument) => {
+            return new Product(productDocument);
+        });
     }
 }
 

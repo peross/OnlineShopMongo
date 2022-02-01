@@ -13,11 +13,11 @@ function createProductsList(products){
         productElement.innerHTML = `
         
         <div class="menu-item-title">
-            <h3>${product.title}</h3>
-            <p>${product.summary}</p>
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
         </div>       
         <div class="menu-item-price">
-            <p>${product.cijena} KM</p>
+            <p>${product.price} KM</p>
         </div>`;
     productList.appendChild(productElement);
     }
@@ -31,7 +31,7 @@ async function fetchCategory(e){
         menuTabs.querySelector('.active').classList.remove('active');
         e.target.classList.add('active');
         
-        console.log(categoryName);
+        // console.log(categoryName);
 
         const response = await fetch(`/products/${categoryName}`);
         const responseData = await response.json();
