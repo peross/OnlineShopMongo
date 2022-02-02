@@ -16,6 +16,14 @@ class User {
         return db.getDb().collection('users').findOne({email: this.email});
     }
 
+    async userExistsAlready(){
+        const userExists = await this.getUserWithSameEmail();
+        if(userExists){
+            return true;
+        } 
+        return false;
+    }
+
     comparePassword(hashedPassword){
         return bcrypt.compare(this.password, hashedPassword);
     }

@@ -1,9 +1,56 @@
 const User = require('../models/user-model');
 const authUtil = require('../util/authentication');
+const validation = require('../util/validation');
+const sessionDataFlash = require('../util/session-flash');
 
-const bcrypt = require('bcrypt');
+function getSignUp(req, res){
+    let sessionData = sessionDataFlash.getSessionData(req);
+    if(!sessionData){
+        sessionData = {
+            email: '',
+            confirmEmail: '',
+            password: '',
+            name: '',
+            surname: '',
+            street: '',
+            postal: '',
+            city: '',
+        };
+    }
+    res.render('customer/auth/signup', {inputData: sessionData});
+}
 
 async function signup(req, res, next){
+    const enteredData = {
+        email: req.body.email,
+        confirmEmail: req.body['confirm-email'],
+        password: req.body.password,
+        name: req.body.name,
+        surname: req.body.surname,
+        street: req.body.street,
+        postal: req.body.postal,
+        city: req.body.city
+    }
+    //user input validation
+    if(!validation.userDetailsAreValid(
+        req.body.email,
+        req.body.password,
+        req.body.name,
+        req.body.surname,
+        req.body.street,
+        req.body.postal,
+        req.body.city) || !validation.emailIsConfirmed(req.body.email, req.body['confirm-email'])) {
+               
+        sessionDataFlash.flashDataToSession(req, {
+            errorMessage: 'Molimo Vas provjerite unesene podatke.',
+            ...enteredData
+        }, () => {
+            res.redirect('/signup');
+        })
+        return;
+    }
+
+    //get input data
     const user = new User(
         req.body.email,
         req.body.password,
@@ -11,28 +58,74 @@ async function signup(req, res, next){
         req.body.surname,
         req.body.street,
         req.body.postal,
-        req.body.city);
+        req.body.city
+            );
 
-    await user.signup();
+    try {
+        //check if user try to create user which already exists
+        const existsAlready = await user.userExistsAlready();
 
-    console.log(user);
-
+        if(existsAlready){
+            sessionDataFlash.flashDataToSession(req, {
+                errorMessage: 'Korisnik već postoji!',
+                ...enteredData
+            }, () => {
+                res.redirect('/signup');
+            })
+            return;
+        }
+        //after check inputs are valid, create new user
+        await user.signup();
+        // console.log(user);
+    } catch (error) {
+        next(error);
+        return;
+    }
+        
     res.redirect('/login');
+}
+
+function getLogin(req, res){
+    let sessionData = sessionDataFlash.getSessionData(req);
+    if(!sessionData){
+        sessionData = {
+            email: '',
+            password: '',
+        };
+    }
+    res.render('customer/auth/login', {inputData: sessionData});
 }
 
 async function login(req, res, next){
     const user = new User(req.body.email, req.body.password);
-    const existingUser = await user.getUserWithSameEmail(); 
+
+    let existingUser;
+    try {
+        existingUser = await user.getUserWithSameEmail(); 
+    } catch (error) {
+        next(error);
+        return;
+    }
+
+    const sessionErrorData = {
+        errorMessage: 'Neispravni podaci! Provjerite da li ste unijeli ispravno email i lozinku.',
+        email: user.email,
+        password: user.password
+    }
 
     if(!existingUser){
-        res.redirect('/login');
+        sessionDataFlash.flashDataToSession(req, sessionErrorData, () => {
+            res.redirect('/login');
+        })
         return;
     }
 
     const passwordIsCorrect = await user.comparePassword(existingUser.password);
 
     if(!passwordIsCorrect){
-        res.redirect('/login');
+        sessionDataFlash.flashDataToSession(req, sessionErrorData, () => {
+            res.redirect('/login');
+        })
         return;
     }
 
@@ -46,17 +139,9 @@ function logout(req, res){
     res.redirect('/');
 }
 
-function getLogin(req, res){
-    res.render('customer/auth/login');
-}
-
-function getSignUp(req, res){
-    res.render('customer/auth/signup');
-}
-
 module.exports = {
-    getLogin: getLogin,
     getSignUp: getSignUp,
+    getLogin: getLogin,
     signup: signup,
     login: login,
     logout: logout,

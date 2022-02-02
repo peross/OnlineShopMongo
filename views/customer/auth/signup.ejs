@@ -3,42 +3,48 @@
 <body>
     <%- include('../../base/includes/header') %> 
     <div class="sign-up-container sec-padding">
-        <h1>Registruj se</h1>
+        <h1>Napravi novi nalog</h1>
+        <% if(inputData.errorMessage) { %>
+            <section class="alert">
+                <h2>Greška</h2>
+                <p><%= inputData.errorMessage %> </p>
+            </section>
+        <% } %> 
         <form action="/signup" method="post">
             <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
             <div class="input-field">
                 <label for="name">Ime</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" value="<%= inputData.name %>" required>
             </div>
             <div class="input-field">
                 <label for="surname">Prezime</label>
-                <input type="text" name="surname" id="surname">
+                <input type="text" name="surname" id="surname" value="<%= inputData.surname %>" required>
             </div>
             <div class="input-field">
                 <label for="street">Ulica</label>
-                <input type="text" name="street" id="street">
+                <input type="text" name="street" id="street" value="<%= inputData.street %>" required>
             </div>
             <div class="input-field">
                 <label for="postal">Poštanski broj</label>
-                <input type="text" name="postal" id="postal">
+                <input type="text" name="postal" id="postal" value="<%= inputData.postal %>" required>
             </div>
             <div class="input-field">
                 <label for="city">Grad</label>
-                <input type="text" name="city" id="city">
+                <input type="text" name="city" id="city" value="<%= inputData.city %>" required>
             </div>
             <div class="input-field">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" value="<%= inputData.email %>" required>
             </div>
             <div class="input-field">
                 <label for="confirm-email">Potvrdi email</label>
-                <input type="email" name="confirm-email" id="confirm-email">
+                <input type="email" name="confirm-email" id="confirm-email" value="<%= inputData.confirmEmail %>" required>
             </div>
             <div class="input-field">
                 <label for="password">Lozinka</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" value="<%= inputData.password %>" required minlength="6">
             </div>
-            <input type="submit" value="Prijavi se" class="btn btn-default">
+            <input type="submit" value="Kreiraj nalog" class="btn btn-default">
             <div class="sign-up">
                Imate nalog? <a href="/login">Prijavi se</a>
             </div>

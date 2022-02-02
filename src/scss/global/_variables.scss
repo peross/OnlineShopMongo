@@ -78,3 +78,23 @@ $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
         }
     }
 }
+
+.alert{
+    border-radius: .5rem;
+    background-color: colors.$error-light;
+    color: colors.$error-dark;
+    padding: 1rem; 
+    margin: 1rem;
+    text-align: center;
+
+    h2{
+        font-size: 1.5rem;
+        margin: .5rem 0;
+        text-transform: uppercase;
+        color: colors.$error-dark;
+    }
+
+    p{
+        margin: .5rem 0;
+    }
+}

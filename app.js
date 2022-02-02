@@ -51,7 +51,7 @@ app.use(authRoutes);
 app.use(productRoutes);
 
 app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
+app.use(errorHandlerMiddleware);
 
 db.connectToDatabase().then(() => {
     app.listen(port);
