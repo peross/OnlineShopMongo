@@ -1,0 +1,27 @@
+@use '../global' as global;
+
+.new-product{
+    text-align: center;
+
+    .form{
+        margin: 0 auto;
+
+        p{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            &:last-child{
+                flex-direction: row;
+                margin-top: 2rem;
+            }
+
+            textarea{
+                width: 100%;
+                resize: none;
+            }
+        }
+    }
+}

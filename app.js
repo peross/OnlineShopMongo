@@ -26,17 +26,21 @@ const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const baseRoutes = require('./routes/base-routes');
 const productRoutes = require('./routes/products-routes');
 const authRoutes = require('./routes/auth-routes');
+const adminRoutes = require('./routes/admin-routes');
 
 //Acitvate EJS view engine
 app.set('view engine', 'ejs');
 app.set('views', (__dirname, 'views'));
 
 //Parse incoming request 
-app.use(express.urlencoded({extended: false}));
 app.use(express.json()); //ajax request
+
 //Serve static files css,js, etc.
 app.use(express.static('public'));
 app.use(express.static('product-data'));
+app.use('/products/assets', express.static('product-data'));
+
+app.use(express.urlencoded({extended: false}));
 
 const sessionConfig = createSessionConfig();
 
@@ -49,9 +53,10 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productRoutes);
+app.use('/admin', adminRoutes);
 
 app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(errorHandlerMiddleware);
 
 db.connectToDatabase().then(() => {
     app.listen(port);

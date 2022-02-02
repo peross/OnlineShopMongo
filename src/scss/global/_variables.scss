@@ -33,7 +33,7 @@ $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
 .btn{
     display: inline-block;
     padding: 1rem 3rem;
-    background-color: transparent;
+    background-color: colors.$main-color;
     border-radius: 3rem;
     border: none;
     font-weight: 500;
@@ -41,13 +41,20 @@ $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
     font-size: 1.6rem;
     cursor: pointer;
     font-family: inherit;
-    color: colors.$main-color;
+    color: colors.$white;
     line-height: 1.5;
     user-select: none;
+
+    &:hover{
+        color: colors.$white;
+        border: .1rem solid colors.$main-color;
+        background-color: transparent;
+    }
 }
 
 .btn-default{
-    border: .2rem solid colors.$main-color;
+    border: .1rem solid colors.$main-color;
+    background-color: transparent;
 
     &:hover{
         color: colors.$white;
@@ -96,5 +103,54 @@ $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
 
     p{
         margin: .5rem 0;
+    }
+}
+
+.menu-tab-item{
+    font-size: 1.8rem;
+    font-family: inherit;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    color: colors.$white;
+    cursor: pointer;
+    transition: color .3s ease;
+    margin: 0 1rem 1rem;
+
+    &.hidden{
+        display: none;
+    }
+
+    &:hover{
+        color: colors.$main-color;
+    }
+
+    &.active{
+        color: colors.$main-color;
+    }
+}
+
+.form{
+    max-width: 50rem;
+    background: rgba(0,0,0,.5);
+    padding: 4rem;
+    border-radius: 1rem;
+    text-align: center;
+
+    input{
+        width: 100%;
+        height: 3rem;
+        margin: 1rem 0;
+    }
+
+    .btn{
+        height: 5rem;
+    }
+
+    select{
+        width: 100%;
+        height: 3rem; 
+        margin: 1rem 0;
+        font-family: inherit;
     }
 }

@@ -5,10 +5,14 @@
                 <a href="/">Damiano's</a>
             </div>
             <button type="button" class="nav-toggler">
-                <label class="badge">0</label>
-                <a href="/cart">
-                    <img src="/images/cart.png" alt="cart" class="cart">
-                </a>
+                
+                <% if(!locals.isAdmin) { %> 
+                    <a href="/cart">
+                        <label class="badge">0</label>
+                        <img src="/images/cart.png" alt="cart" class="cart">
+                    </a>
+                <% } %> 
+                    
                 <span></span>
             </button>
             <nav class="nav">

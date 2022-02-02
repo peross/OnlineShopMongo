@@ -1,5 +1,6 @@
 function createUserSessions(req, user, action) {
     req.session.uid = user._id.toString(); //_id format used by mongodb
+    req.session.isAdmin = user.isAdmin;
     req.session.save(action); //when session successfully saved, execute action (function)
 }
 
