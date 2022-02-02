@@ -12,6 +12,14 @@ class User {
         this.city = city;
     }
 
+    getUserWithSameEmail(){
+        return db.getDb().collection('users').findOne({email: this.email});
+    }
+
+    comparePassword(hashedPassword){
+        return bcrypt.compare(this.password, hashedPassword);
+    }
+    
     async signup(){
         const hashedPassword = await bcrypt.hash(this.password, 12);
         await db.getDb().collection('users').insertOne({
@@ -24,6 +32,8 @@ class User {
             city: this.city
         });
     }
+
+    
 }
 
 module.exports = User;

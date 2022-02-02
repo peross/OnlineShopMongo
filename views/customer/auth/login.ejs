@@ -4,7 +4,8 @@
     <%- include('../../base/includes/header') %> 
     <div class="login-container sec-padding">
         <h1>Prijavite se</h1>
-        <form action="">
+        <form action="/login" method="post">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">  
             <div class="input-field">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">

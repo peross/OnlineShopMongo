@@ -43,7 +43,7 @@
             }
         }
         .nav-toggler{
-            width: 4.4rem;
+            width: 7.5rem;
             height: 3.4rem;
             margin-right: 1.5rem;
             cursor: pointer;
@@ -52,6 +52,20 @@
             justify-content: center;
             border: none;
             background-color: transparent;
+            position: relative;
+
+            .badge{
+                position: absolute;
+                left: 17%;
+                top: 0;
+                color: white;
+                background: green;
+                border-radius: 50%;
+                width: 1.6rem;
+                height: 1.5rem;
+                font-size: 13px;
+                z-index: 1;
+            }
 
             &.active{
                 position: absolute;
@@ -59,6 +73,14 @@
                 right: 0;
                 transition: all .5s ease;
                 transform: translateX(-20rem);
+
+                .cart{
+                    display: none;
+                }
+
+                .badge{
+                    display: none;
+                }
 
                 span{
                     background-color: transparent;
@@ -76,12 +98,19 @@
                 }
             }
 
+            .cart{
+                width: 3rem;
+                position: relative;
+            }
+
             span{
                 position: relative;
                 height: .2rem;
                 width: 3rem;
                 display: block;
                 background-color: global.$white;
+                margin-left: 1rem;
+
 
                 &:before,
                 &:after{
@@ -128,6 +157,21 @@
                         color: global.$white;
                         padding: 1rem 3rem;
                         transition: color .3s ease;
+
+                        &:hover{
+                            color: global.$main-color;
+                        }
+                    }
+                    .logout{
+                        display: block;
+                        font-size: 2.5rem;
+                        color: #fff;
+                        padding: 1rem 3rem;
+                        transition: color .3s ease;
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
 
                         &:hover{
                             color: global.$main-color;

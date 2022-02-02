@@ -5,6 +5,7 @@
     <div class="sign-up-container sec-padding">
         <h1>Registruj se</h1>
         <form action="/signup" method="post">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
             <div class="input-field">
                 <label for="name">Ime</label>
                 <input type="text" name="name" id="name">
