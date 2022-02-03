@@ -1,4 +1,5 @@
 const db = require('../data/database');
+const mongodb = require('mongodb');
 
 class Product {
     constructor(productData){
@@ -8,11 +9,33 @@ class Product {
         this.category = productData.category;
         this.image = productData.image; //name of the image file
         this.imagePath = `product-data/images/menu/${productData.image}`;
-        this.imageUrl = `/products/assets/images/menu/${productData.image}`;
+        this.imageUrl = `/products/assets/images/menu/${productData.image}`; 
 
-        if(productData.product_id){
-            this.id = productData.product_id;
+        if(productData._id){
+            this.id = productData._id.toString();
         }
+    }
+
+    static async findProductById(productId){
+        let prodId;
+        try {
+            prodId = new mongodb.ObjectId(productId);
+        } catch (error) {
+            error.code = 404;
+            throw error;
+        }
+
+        const product = await db.getDb().collection('products').findOne({_id: prodId});
+
+        console.log(product);
+
+        if(!product) {
+            const error = new Error('Nije moguće pronaći proizvod sa datim id-om');
+            error.code = 404;
+            throw error;
+        }
+
+        return new Product(product);
     }
 
     static async findAllProducts(){

@@ -38,7 +38,7 @@ app.use(express.json()); //ajax request
 //Serve static files css,js, etc.
 app.use(express.static('public'));
 app.use(express.static('product-data'));
-app.use('/products/assets', express.static('product-data'));
+app.use('/products/assets', express.static('product-data')); // /products/asstest will be "removed" and express will look at the rest of this path
 
 app.use(express.urlencoded({extended: false}));
 

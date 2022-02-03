@@ -1,0 +1,9 @@
+<%- include('../../base/includes/head', {pageTitle: 'Ažuriraj proizvod'}) %> 
+
+</head>
+<body>
+    <%- include('../../base/includes/header') %> 
+    <section class="new-product sec-padding">
+        <h1>Ažuriraj proizvod</h1>
+        <%- include('includes/product-form', {submitPath: '/admin/products/' + product.id, product: product}) %> 
+    </section>

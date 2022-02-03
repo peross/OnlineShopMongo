@@ -1,3 +1,4 @@
+const { registry } = require('gulp');
 const Category = require('../models/category-model');
 const Product = require('../models/product-model');
 
@@ -39,8 +40,36 @@ async function addNewProduct(req, res, next) {
     res.redirect('/admin/products');
 }
 
+async function getUpdateProduct(req, res, next){
+    try {
+        const product = await Product.findProductById(req.params.id); //values entered in the url
+        res.render('admin/products/update-product', {product: product});
+        console.log(product);
+    } catch (error) {
+        next(error);
+        return;
+    }
+}
+
+async function updateProduct(req, res, next){
+    const product = new Product({
+        ...req.body,
+        _id: req.params.id
+    });
+    try { 
+        await product.save();
+    } catch (error) {
+        next(error);
+        return;
+    }
+
+    res.redirect('/admin/products');
+}
+
 module.exports = {
     getProducts: getProducts,
     getNewProduct: getNewProduct,
     addNewProduct: addNewProduct,
+    getUpdateProduct: getUpdateProduct,
+    updateProduct: updateProduct,
 }
