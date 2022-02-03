@@ -56,6 +56,11 @@ async function updateProduct(req, res, next){
         ...req.body,
         _id: req.params.id
     });
+
+    if(req.file){
+        product.replaceImage(req.file.filename);
+    }
+
     try { 
         await product.save();
     } catch (error) {

@@ -8,8 +8,7 @@ class Product {
         this.price = +productData.price; //force number
         this.category = productData.category;
         this.image = productData.image; //name of the image file
-        this.imagePath = `product-data/images/menu/${productData.image}`;
-        this.imageUrl = `/products/assets/images/menu/${productData.image}`; 
+        this.updateImageData();
 
         if(productData._id){
             this.id = productData._id.toString();
@@ -27,14 +26,14 @@ class Product {
 
         const product = await db.getDb().collection('products').findOne({_id: prodId});
 
-        console.log(product);
-
+        
         if(!product) {
             const error = new Error('Nije moguće pronaći proizvod sa datim id-om');
             error.code = 404;
             throw error;
         }
-
+        
+        console.log(product);
         return new Product(product);
     }
 
@@ -45,6 +44,11 @@ class Product {
         });
     }
 
+    updateImageData(){
+        this.imagePath = `product-data/images/menu/${this.image}`;
+        this.imageUrl = `/products/assets/images/menu/${this.image}`; 
+    }
+
     async save() {
         const productData = {
             name: this.name,
@@ -53,7 +57,23 @@ class Product {
             price: this.price,
             category: this.category
         };
-        await db.getDb().collection('products').insertOne(productData);
+
+        if(this.id){
+            const productId = new mongodb.ObjectId(this.id);
+            if(!this.image){
+                delete productData.image; 
+            }
+            await db.getDb().collection('products').updateOne({_id: productId}, {
+                $set: productData
+            });
+        } else{
+            await db.getDb().collection('products').insertOne(productData);
+        }
+    }
+
+    async replaceImage(newImage){
+        this.image = newImage;
+        this.updateImageData();
     }
 }
 
