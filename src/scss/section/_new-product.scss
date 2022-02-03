@@ -23,5 +23,24 @@
                 resize: none;
             }
         }
+
+        .image-upload-preview{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-bottom: 1rem;
+
+            input{
+                max-width: 20rem;
+            }
+
+            img{
+                display: none;
+                width: 10rem;
+                height: 7rem;
+                margin-bottom: 1rem;
+            }
+        }
     }
 }

@@ -4,10 +4,15 @@
         <label for="name">Naziv proizvoda</label>
         <input type="text" name="name" id="name" value="<%= product.name %>" required>
     </p>
-    <p>
-        <label for="image">Dodaj sliku</label>
-        <input type="file" name="image" id="image" accept=".png,.jpg,.jpeg,.webp" <% if(imageRequired) { %>required<% } %>  >
-    </p>
+
+    <div class="image-upload-preview">
+        <p>
+            <label for="image">Dodaj sliku</label>
+            <input type="file" name="image" id="image" accept=".png,.jpg,.jpeg,.webp" <% if(imageRequired) { %>required<% } %>  >
+        </p>
+        <img src="/products/assets/images/menu/0e2f5d33-7372-4a07-a173-2b061edec9e1-omlet-koziji-sir-i-bukovace.webp" alt="Slika">
+    </div>
+
     <p>
         <label for="description">Opis</label>
         <textarea name="description" id="description" rows="7" required><%= product.description %></textarea>
