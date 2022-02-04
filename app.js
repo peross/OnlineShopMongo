@@ -21,6 +21,7 @@ const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const notFoundMiddleware = require('./middlewares/not-found');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
+const protectRoutesMiddleware = require('./middlewares/protect-route');
 
 //Routes
 const baseRoutes = require('./routes/base-routes');
@@ -53,10 +54,11 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productRoutes);
+app.use(protectRoutesMiddleware);
 app.use('/admin', adminRoutes);
 
 app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
+app.use(errorHandlerMiddleware);
 
 db.connectToDatabase().then(() => {
     app.listen(port);

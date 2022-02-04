@@ -1,0 +1,1 @@
+const deleteProductBtns=document.querySelectorAll(".menu-item button");async function deleteProduct(e){const t=e.target,d=t.dataset.productid,n=t.dataset.csrf;(await fetch("/admin/products/"+d+"?_csrf="+n,{method:"DELETE"})).ok?t.parentElement.parentElement.remove():alert("Nesto nije u redu")}for(const e of deleteProductBtns)e.addEventListener("click",deleteProduct);

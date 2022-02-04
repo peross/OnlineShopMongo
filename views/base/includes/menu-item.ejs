@@ -1,13 +1,20 @@
 <div class="menu-item">
+
     <div class="menu-item-title">
         <a href="/admin/products/<%= product.id %>">
             <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
             <h3><%= product.name %></h3> 
         </a>
-        
-        <!-- <p><%= product.description %></p> -->
-    </div>       
+    </div>   
+
     <div class="menu-item-price">
         <p><%= product.price %> KM</p>
     </div>
+
+    <% if(locals.isAdmin) { %> 
+    <div class="delete">
+        <a href="/admin/products/<%= product.id %>">Uredi</a>
+        <button id="delete-btn" class="delete-btn" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">Obriši</button>
+    </div>
+    <% } %> 
 </div>
