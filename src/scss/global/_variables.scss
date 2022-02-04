@@ -55,9 +55,11 @@ $shadow-medium: 0 .2rem .8rem rgba(0, 0, 0, .2);
 .btn-default{
     border: .1rem solid colors.$main-color;
     background-color: transparent;
+    color: colors.$white;
+    padding: 1rem;
+    margin: 0 2rem;
 
     &:hover{
-        color: colors.$white;
         background-color: colors.$main-color;
     }
 }

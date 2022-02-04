@@ -1,2 +1,55 @@
 @use '../global' as global;
 
+
+.product-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+
+    @include global.tablet{
+        display: block;
+        text-align: center;
+    }
+
+    img{
+        width: 50%;
+        border-radius: 1rem;
+
+        @include global.mobile{
+            width: 100%;
+        }
+    }
+
+    .product-info{
+        text-align: center;
+        padding: 1rem;
+        background: global.$dark;
+        color: global.$white-light;
+
+        h1{
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        p{
+            padding: 1rem;
+            position: relative;
+
+            &:before{
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                transform: translate(-50%);
+                border-top: .1rem solid global.$white;
+                width: 50%;
+            }
+        }
+
+        .product-price{
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}
