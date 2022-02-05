@@ -1,11 +1,8 @@
 const Product = require('../models/product-model');
 
 async function getAllProducts(req, res, next){
-    let categoryName = req.body.categoryName;
-    // console.log(categoryName);
-
     try{
-        const products = await Product.findAllProducts(categoryName);
+        const products = await Product.findAllProducts();
         res.render('customer/products/all-products', {products: products});
     } catch(error){
         next(error);
@@ -21,10 +18,21 @@ async function getProductDetails(req, res, next){
         next(error);
         return;
     }
+}
 
+async function getCategory(req, res, next){
+    let categoryName = req.body.category;
+    try {
+        const category = await Product.findCategory(categoryName)
+        res.render('customer/products/all-products', {category: category});
+    } catch (error) {
+        next(error);
+        return;
+    }
 }
 
 module.exports = {
     getAllProducts: getAllProducts,
     getProductDetails: getProductDetails,
+    getCategory: getCategory,
 }

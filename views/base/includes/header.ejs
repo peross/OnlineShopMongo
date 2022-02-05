@@ -8,7 +8,7 @@
                 
                 <% if(!locals.isAdmin) { %> 
                     <a href="/cart">
-                        <label class="badge">0</label>
+                        <label class="badge"><%= locals.cart.totalQuantity %></label>
                         <img src="/images/cart.png" alt="cart" class="cart">
                     </a>
                 <% } %> 

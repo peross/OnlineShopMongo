@@ -33,7 +33,7 @@ class Product {
             throw error;
         }
         
-        console.log(product);
+        // console.log(product);
         return new Product(product);
     }
 
@@ -41,6 +41,13 @@ class Product {
         const product = await db.getDb().collection('products').find().toArray();
         return product.map((productDocument) => {
             return new Product(productDocument);
+        });
+    }
+
+    static async findCategory(categoryName){
+        const category = await db.getDb().collection('products').find({'category': new RegExp(categoryName, i)}).toArray();
+        return category.map((categoryDocument) => {
+            return new Product(categoryDocument);
         });
     }
 

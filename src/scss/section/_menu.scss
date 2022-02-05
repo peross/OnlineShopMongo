@@ -90,6 +90,15 @@
                 border-bottom: .1rem dashed global.$white-light;
             }
 
+            &:hover{
+                h3{
+                    color: global.$main-color;
+                }
+                p{
+                    color: global.$white;
+                }
+            }
+
             &-title{
                 display: flex;
                 align-items: center;

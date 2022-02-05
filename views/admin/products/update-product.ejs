@@ -4,6 +4,7 @@
 <body>
     <%- include('../../base/includes/header') %> 
     <section class="new-product sec-padding">
+        <a href="/products" class="btn-default">Nazad</a>
         <h1>Ažuriraj proizvod</h1>
         <%- include('includes/product-form', {submitPath: '/admin/products/' + product.id, product: product, imageRequired: false}) %> 
     </section>

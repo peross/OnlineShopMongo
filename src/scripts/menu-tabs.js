@@ -14,7 +14,7 @@ function createProductsList(products){
         
         <div class="menu-item-title">
             <h3>${product.name}</h3>
-            <p>${product.description}</p>
+            
         </div>       
         <div class="menu-item-price">
             <p>${product.price} KM</p>
@@ -27,7 +27,7 @@ function createProductsList(products){
 
 async function fetchCategory(e){
     if(e.target.classList.contains('menu-tab-item') && !e.target.classList.contains('active')){
-        const categoryName = e.target.getAttribute('data-target');
+        const categoryName = e.target.getAttribute('data-category');
         menuTabs.querySelector('.active').classList.remove('active');
         e.target.classList.add('active');
         
@@ -36,7 +36,7 @@ async function fetchCategory(e){
         const response = await fetch(`/products/${categoryName}`);
         const responseData = await response.json();
 
-        console.log(responseData);
+        // console.log(responseData);
 
         const productList = createProductsList(responseData);
         menuTabSection.innerHTML = '';

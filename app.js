@@ -22,12 +22,14 @@ const notFoundMiddleware = require('./middlewares/not-found');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const protectRoutesMiddleware = require('./middlewares/protect-route');
+const cartMiddleware = require('./middlewares/cart');
 
 //Routes
 const baseRoutes = require('./routes/base-routes');
 const productRoutes = require('./routes/products-routes');
 const authRoutes = require('./routes/auth-routes');
 const adminRoutes = require('./routes/admin-routes');
+const cartRoutes = require('./routes/cart-routes');
 
 //Acitvate EJS view engine
 app.set('view engine', 'ejs');
@@ -40,13 +42,15 @@ app.use(express.json()); //ajax request
 app.use(express.static('public'));
 app.use(express.static('product-data'));
 app.use('/products/assets', express.static('product-data')); // /products/asstest will be "removed" and express will look at the rest of this path
-
 app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 const sessionConfig = createSessionConfig();
 
 app.use(expressSession(sessionConfig));
 app.use(csrf());
+
+app.use(cartMiddleware);
 
 app.use(addCsrfTokenMiddleware);
 app.use(checkAuthStatusMiddleware);
@@ -54,6 +58,7 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productRoutes);
+app.use('/cart', cartRoutes);
 app.use(protectRoutesMiddleware);
 app.use('/admin', adminRoutes);
 

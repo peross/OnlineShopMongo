@@ -40,8 +40,6 @@ class User {
             city: this.city
         });
     }
-
-    
 }
 
 module.exports = User;

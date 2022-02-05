@@ -1,5 +1,5 @@
-<%- include('../../base/includes/head', {pageTitle: 'Detalji'}) %>
-
+<%- include('../../base/includes/head', {pageTitle: product.name}) %>
+<script src="/scripts/cart-management.js" defer></script>
 </head>
 <body>
     <%- include('../../base/includes/header') %> 
@@ -11,7 +11,8 @@
                 <h1><%= product.name %></h1>
                 <p><%= product.description %></p>
                 <p class="product-price"><%= product.price %> KM</p>
-                <button class="btn btn-default">Dodaj u korpu</button>
+                
+                <button class="btn btn-default" id="add-to-cart" data-productid="<%= product.id %>" data-csrf="<%= locals.csrfToken %>">Dodaj u korpu</button>
             </div>
         </div>
     </div>
