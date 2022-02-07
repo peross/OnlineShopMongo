@@ -1,5 +1,5 @@
 const cartItemUpdateFormElements = document.querySelectorAll('.cart-item-management');
-const cartItemTotalPriceElement = document.querySelector('.cart-item-total');
+// const cartItemTotalPriceElement = document.querySelector('.cart-item-total');
 const cartTotalPriceElement = document.querySelector('.cart-total-price');
 const cartBadge = document.querySelector('.badge');
 const deleteBtnElement = document.getElementById('delete');
@@ -42,7 +42,7 @@ async function updateCartItem(e){
         cartForm.parentElement.parentElement.remove();
     } else {
         //update cart quantity
-        cartItemTotalPriceElement.textContent = responseData.updateCartData.updatedItemPrice.toFixed(2);
+        // cartItemTotalPriceElement.textContent = responseData.updateCartData.updatedItemPrice.toFixed(2);
     }
     
     cartTotalPriceElement.textContent = responseData.updateCartData.newTotalPrice.toFixed(2);
@@ -50,6 +50,7 @@ async function updateCartItem(e){
 }
 
 function deleteItem(){
+    responseData.updateCartData.updatedItemPrice = 0;
     cartForm.parentElement.parentElement.remove();
 }
 

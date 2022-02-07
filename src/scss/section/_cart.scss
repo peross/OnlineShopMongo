@@ -1,7 +1,9 @@
 @use '../global' as global;
 
-.product-details{
+.cart-product-details{
     flex-direction: column;
+    padding: 2rem;
+    text-align: center;
 
     .cart-item{
         border: 0.1rem solid;
@@ -16,8 +18,20 @@
             flex-direction: column;
         }
 
-        &-info{
+        .cart-item-info{
             width: 50%;
+
+            h2{
+                font-weight: 400;
+            }
+
+            p{
+                span{
+                  font-weight: bold;
+                  font-size: 2rem;
+                  color: global.$main-color;  
+                }
+            }
 
             @include global.mobile{
                 width: 100%;
