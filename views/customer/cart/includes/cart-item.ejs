@@ -1,0 +1,11 @@
+<article class="cart-item">
+    <div class="cart-item-info">
+        <h2><%= item.product.name %></h2>
+        <p><span class="cart-item-total"><%= item.totalPrice.toFixed(2) %></span> KM x <span>(<%= item.product.price.toFixed(2) %>) KM</span></p>
+    </div>
+    <form class="cart-item-management" data-productid="<%= item.product.id %>" data-csrf="<%= locals.csrfToken %>">
+        <input type="number"  name="quantity" value="<%= item.quantity %>" required>
+        <button class="btn-default">Ažuriraj</button>
+        <button class="btn-default" id="delete">Obriši</button>
+    </form>
+</article>

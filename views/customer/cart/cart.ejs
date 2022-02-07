@@ -1,0 +1,22 @@
+<%- include('../../base/includes/head', {pageTitle: 'Korpa'}) %>
+<script src="/scripts/cart-item-management.js" defer></script>
+</head>
+<body>
+    <%- include('../../base/includes/header') %> 
+    <div class="container sec-padding">
+        <a href="/products" class="btn-default">Nazad</a>
+        <div class="product-details">
+            <h1>Vaša korpa</h1>
+            <ul class="cart-items">
+                <% for(const cartItem of locals.cart.items) { %> 
+                <li>
+                    <%- include('includes/cart-item', {item: cartItem}) %> 
+                </li>
+                <% } %> 
+            </ul>
+            <div class="cart-total">
+                <p>Ukupno: <span class='cart-total-price'><%= locals.cart.totalPrice.toFixed(2) %></span> KM</p>
+                <button class="btn-default">Kupi</button>
+            </div>
+        </div>
+    </div>

@@ -16,8 +16,8 @@ class Cart{
             const item = this.items[i];
             if(item.product.id === product.id){
                 //we can change const because we don't store the object or array, instead just the memory address (pointer) and that address hasn't change
-                cartItem.quantity += 1;
-                cartItem.totalPrice += product.price; 
+                cartItem.quantity = item.quantity + 1;
+                cartItem.totalPrice = item.totalPrice + product.price; 
                 this.items[i] = cartItem;
 
                 //increase quantity of already exists item
@@ -30,6 +30,31 @@ class Cart{
         this.totalQuantity++;
         this.totalPrice += product.price;
         console.log(this.totalQuantity);
+    }
+
+    updateItem(productId, newQuantity){
+        for(let i=0; i<this.items.length; i++){
+            const item = this.items[i];
+            if(item.product.id === productId && newQuantity > 0){
+                //we can change const because we don't store the object or array, instead just the memory address (pointer) and that address hasn't change
+                const cartItem = {...item}; //copy of the item found
+                cartItem.quantity = newQuantity;
+                const quantityChange = newQuantity - item.quantity;
+                cartItem.totalPrice = newQuantity * item.product.price; 
+                this.items[i] = cartItem;
+
+                //increase quantity of already exists item
+                this.totalQuantity = this.totalQuantity + quantityChange;
+                this.totalPrice += quantityChange * item.product.price;
+                return {updatedItemPrice: cartItem.totalPrice};
+            } else if (item.product.id === productId && newQuantity <=0){
+                this.items.splice(i, 1); //remove item from array by sprecifying the index of the item that should be removed
+
+                this.totalQuantity = this.totalQuantity - item.quantity;
+                this.totalPrice -= item.totalPrice;
+                return {updatedItemPrice: 0};
+            }
+        }
     }
 }
 
