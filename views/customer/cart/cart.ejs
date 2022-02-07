@@ -1,5 +1,6 @@
 <%- include('../../base/includes/head', {pageTitle: 'Korpa'}) %>
 <script src="/scripts/cart-item-management.js" defer></script>
+
 </head>
 <body>
     <%- include('../../base/includes/header') %> 
@@ -16,7 +17,15 @@
             </ul>
             <div class="cart-total">
                 <p>Ukupno: <span class='cart-total-price'><%= locals.cart.totalPrice.toFixed(2) %></span> KM</p>
-                <button class="btn-default">Kupi</button>
+
+                <% if(locals.isAuth) { %> 
+                    <form action="/orders" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                        <button class="btn-default">Kupi</button>
+                    </form>
+                <% } else{ %>
+                    <p>Prijavite se za nastavak kupovine.</p>
+                <% } %>  
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@ class Cart{
             const item = this.items[i];
             if(item.product.id === product.id){
                 //we can change const because we don't store the object or array, instead just the memory address (pointer) and that address hasn't change
-                cartItem.quantity = item.quantity + 1;
+                cartItem.quantity = +item.quantity + 1; //force conversion to number
                 cartItem.totalPrice = item.totalPrice + product.price; 
                 this.items[i] = cartItem;
 

@@ -45,7 +45,7 @@ class Product {
     }
 
     static async findCategory(categoryName){
-        const category = await db.getDb().collection('products').find({'category': new RegExp(categoryName, i)}).toArray();
+        const category = await db.getDb().collection('products').find({'category': categoryName}).toArray();
         return category.map((categoryDocument) => {
             return new Product(categoryDocument);
         });

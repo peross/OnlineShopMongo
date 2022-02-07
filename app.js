@@ -30,6 +30,7 @@ const productRoutes = require('./routes/products-routes');
 const authRoutes = require('./routes/auth-routes');
 const adminRoutes = require('./routes/admin-routes');
 const cartRoutes = require('./routes/cart-routes');
+const orderRotues = require('./routes/order-routes');
 
 //Acitvate EJS view engine
 app.set('view engine', 'ejs');
@@ -60,6 +61,7 @@ app.use(authRoutes);
 app.use(productRoutes);
 app.use('/cart', cartRoutes);
 app.use(protectRoutesMiddleware);
+app.use('/orders', orderRotues);
 app.use('/admin', adminRoutes);
 
 app.use(notFoundMiddleware);

@@ -22,6 +22,7 @@ async function getProductDetails(req, res, next){
 
 async function getCategory(req, res, next){
     let categoryName = req.body.category;
+    console.log(categoryName);
     try {
         const category = await Product.findCategory(categoryName)
         res.render('customer/products/all-products', {category: category});
