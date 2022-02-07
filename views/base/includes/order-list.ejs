@@ -1,0 +1,9 @@
+<div class="order-list sec-padding">
+ <ul>
+    <% for(const order of orders) { %>
+        <li>
+            <%- include('order-item', {order: order}) %>
+        </li>
+        <% } %> 
+</ul>   
+</div>

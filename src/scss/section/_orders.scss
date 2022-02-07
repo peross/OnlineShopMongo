@@ -1,0 +1,15 @@
+@use '../global' as global;
+
+.order-list{
+    flex-direction: column; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .order-item{
+        border: 0.1rem solid;
+        padding: 2rem;
+        margin: 2rem 0;
+        background-color: global.$dark;
+    }
+}

@@ -1,4 +1,5 @@
 const db = require('../data/database');
+const mongodb = require('mongodb');
 
 class Order{
     constructor(cart, userData, status = 'na čekanju', date, orderId){
@@ -17,9 +18,45 @@ class Order{
         this.id = orderId;
     }
 
+    static transformOrderDocument(orderDoc){
+        return new Order(
+            orderDoc.productData,
+            orderDoc.userData,
+            orderDoc.status,
+            orderDoc.date,
+            orderDoc._id
+        );
+    }
+
+    static transformOrderDocuments(orderDocs){
+        return orderDocs.map(this.transformOrderDocument);
+    }
+
+    static async findAllOrders(){
+        const orders = await db.getDb().collection('orders').find().sort({_id: -1}).toArray();
+
+        return this.transformOrderDocuments(orders);
+    }
+
+    static async findAllOrdersForUser(userId){
+        const uid = new mongodb.ObjectId(userId);
+
+        const orders = await db.getDb().collection('orders').find({'userData._id': uid}).sort({_id: -1}).toArray();
+
+        return this.transformOrderDocuments(orders);
+    }
+
+    static async findOrdersById(orderId){
+        orderId = new mongodb.ObjectId(orderId);
+        const order = await db.getDb().collection('orders').findOne({_id: orderId});
+        return this.transformOrderDocument(order);
+    }
+
     save(){
         if(this.id){
             //if we have id then update existing order
+            const orderId = new mongodb.ObjectId(this.id);
+            return db.getDb().collection('orders').updateOne({_id: orderId}, {$set: {status: this.status}});
         } else {
             //add new order 
             const orderDocument = {

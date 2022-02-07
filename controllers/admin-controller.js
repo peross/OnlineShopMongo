@@ -1,6 +1,6 @@
-const { registry } = require('gulp');
 const Category = require('../models/category-model');
 const Product = require('../models/product-model');
+const Order = require('../models/order-model');
 
 async function getProducts(req, res, next) {
     try {
@@ -84,6 +84,17 @@ async function deleteProduct(req, res, next){
     res.json({message: 'Artikl obrisan'});
 }
 
+async function getOrders(req, res, next){
+    let orders;
+    try {
+        orders = await Order.findAllOrders();
+        res.render('admin/orders/admin-order', {orders: orders})
+    } catch (error) {
+        next(error);
+        return;
+    }
+}
+
 module.exports = {
     getProducts: getProducts,
     getNewProduct: getNewProduct,
@@ -91,4 +102,5 @@ module.exports = {
     getUpdateProduct: getUpdateProduct,
     updateProduct: updateProduct,
     deleteProduct: deleteProduct,
+    getOrders: getOrders,
 }
