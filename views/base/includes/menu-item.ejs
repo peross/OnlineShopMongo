@@ -18,7 +18,7 @@
     </div>   
 
     <div class="menu-item-price">
-        <p><%= product.price %> KM</p>
+        <p><%= product.price.toFixed(2) %> KM</p>
     </div>
 
     <% if(locals.isAdmin) { %> 

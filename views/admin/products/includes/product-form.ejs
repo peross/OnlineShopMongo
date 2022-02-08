@@ -25,8 +25,20 @@
     </p>
     
     <p>
-        <label for="categoty">Kategorija</label>
-        <input type="text" name="category" id="category" value="<%= product.category %>" required>
+        <div>
+            
+            <select name="category">
+                <option value="Doručak" <% if (product.category === 'Doručak') { %>selected<% } %>>Doručak</option>
+                <option value="Predjela" <% if (product.category === 'Predjela') { %>selected<% } %>>Predjela</option>
+                <option value="Brusketi" <% if (product.category === 'Brusketi') { %>selected<% } %>>Brusketi</option>
+                <option value="Supe i čorbe" <% if (product.category === 'Supe i čorbe') { %>selected<% } %>>Supe i čorbe</option>
+                <option value="Glavna jela" <% if (product.category === 'Glavna jela') { %>selected<% } %>>Glavna jela</option>
+                <option value="Prilozi" <% if (product.category === 'Prilozi') { %>selected<% } %>>Prilozi</option>
+                <option value="Salate" <% if (product.category === 'Salate') { %>selected<% } %>>Salate</option>
+                <option value="Sosevi" <% if (product.category === 'Sosevi') { %>selected<% } %>>Sosevi</option>
+                <option value="Deserti" <% if (product.category === 'Deserti') { %>selected<% } %>>Deserti</option>
+            </select>
+        </form>
     </p>
 
     <% } %>

@@ -31,7 +31,7 @@ async function addNewProduct(req, res, next) {
     });
 
     try {
-        await product.save();    
+        await product.save(cat);    
     } catch (error) {
         next(error);
         return;

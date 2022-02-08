@@ -65,8 +65,8 @@ app.use('/cart', cartRoutes);
 app.use('/orders', protectRoutesMiddleware,orderRotues);
 app.use('/admin', protectRoutesMiddleware,adminRoutes);
 
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(notFoundMiddleware);
+// app.use(errorHandlerMiddleware);
 
 db.connectToDatabase().then(() => {
     app.listen(port);

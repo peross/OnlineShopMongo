@@ -68,7 +68,7 @@ class Product {
         this.imageUrl = `/products/assets/images/menu/${this.image}`; 
     }
 
-    async save() {
+    async save(category) {
         const productData = {
             name: this.name,
             image: this.image,
@@ -88,6 +88,7 @@ class Product {
         } else{
             await db.getDb().collection('products').insertOne(productData);
         }
+        // console.log(this.category);
     }
 
     async replaceImage(newImage){
