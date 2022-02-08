@@ -95,6 +95,27 @@ async function getOrders(req, res, next){
     }
 }
 
+async function updateOrder(req, res, next){
+    const orderId = req.params.id;
+    const newStatus = req.body.newStatus;
+
+    console.log(newStatus);
+    try {
+        const order = await Order.findOrdersById(orderId);
+        order.status = newStatus;
+        
+        await order.save();
+
+        res.json({
+            message: 'Artikl azuriran',
+            newStatus: newStatus
+        });
+    } catch (error) {
+        next(error);
+        return;
+    }
+}
+
 module.exports = {
     getProducts: getProducts,
     getNewProduct: getNewProduct,
@@ -103,4 +124,5 @@ module.exports = {
     updateProduct: updateProduct,
     deleteProduct: deleteProduct,
     getOrders: getOrders,
+    updateOrder: updateOrder
 }

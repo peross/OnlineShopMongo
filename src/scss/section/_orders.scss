@@ -1,5 +1,8 @@
 @use '../global' as global;
 
+.sec-padding{
+    padding: 8rem 1rem;
+}
 .order-list{
     flex-direction: column; 
     display: flex;
@@ -11,5 +14,42 @@
         padding: 2rem;
         margin: 2rem 0;
         background-color: global.$dark;
+
+        .order-summary{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p{
+                background-color: #191f3a;
+                padding: 1rem;
+                border-radius: 1rem;
+                color: white;
+                font-weight: bold;
+            }
+        }
+    }
+
+        .order-details{
+            address{
+                p{
+                    a{
+                        color: global.$main-color;
+                    }
+                }
+            }
+
+            ul{
+                list-style: auto;
+                li{
+                    margin: 1rem 4rem;
+                    text-transform: none;
+                }
+            }
+        }
+
+        form{
+            display: flex;
+            margin: 1rem 0;
     }
 }
