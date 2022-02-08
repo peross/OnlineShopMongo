@@ -44,6 +44,18 @@ class Product {
         });
     }
 
+    static async findMultipleProducts(ids){
+        const productIds = ids.map((id) => {
+            return new mongodb.ObjectId(id);
+        });
+
+        const products = await db.getDb().collection('products').find({_id: {$in: productIds}}).toArray();
+
+        return products.map((productDocument) => {
+            return new Product(productDocument);
+        });
+    }
+
     static async findCategory(categoryName){
         const category = await db.getDb().collection('products').find({'category': categoryName}).toArray();
         return category.map((categoryDocument) => {
