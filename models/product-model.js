@@ -37,8 +37,8 @@ class Product {
         return new Product(product);
     }
 
-    static async findAllProducts(){
-        const product = await db.getDb().collection('products').find().toArray();
+    static async findAllProducts(search){
+        const product = await db.getDb().collection('products').find({'name': new RegExp(search, 'i')}).toArray();
         return product.map((productDocument) => {
             return new Product(productDocument);
         });
@@ -53,13 +53,6 @@ class Product {
 
         return products.map((productDocument) => {
             return new Product(productDocument);
-        });
-    }
-
-    static async findCategory(categoryName){
-        const category = await db.getDb().collection('products').find({'category': categoryName}).toArray();
-        return category.map((categoryDocument) => {
-            return new Product(categoryDocument);
         });
     }
 

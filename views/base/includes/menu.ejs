@@ -6,10 +6,10 @@
             </div>
         </div>
 
-        <div class="row">
-            <form class="menu-tabs" id="menu" action="/products" method="GET">
+        <form action="/products" method="GET" class="row">
+            <div class="menu-tabs" id="menu">
                 <button type="button" class="menu-tab-item active hidden" data-target="Doručak" name="category" id="defaultCategory">Doručak</button>
-                <button type="button" class="menu-tab-item" name="category" data-category="Doručak" id="defaultCategory">Doručak</button>
+                <button type="button" class="menu-tab-item" name="category" onclick="changeValue(this)" data-category="Doručak" id="defaultCategory">Doručak</button>
                 
                 <button type="button" class="menu-tab-item" name="category" data-category="Predjela">Predjela</button>
                 <button type="button" class="menu-tab-item" name="category" data-category="Brusketi">Brusketi</button>
@@ -19,8 +19,12 @@
                 <button type="button" class="menu-tab-item" name="category" data-category="Salate">Salate</button>
                 <button type="button" class="menu-tab-item" name="category" data-category="Sosevi">Sosevi</button>
                 <button type="button" class="menu-tab-item" name="category" data-category="Deserti">Deserti</button>
-            </form>
-        </div>
+            </div>
+        </form>
+
+        <form action="/products" method="GET">
+            <input type="text" name="search" id="search" placeholder="Pretraži proizvode...">
+        </form>
         
         <% if(locals.isAdmin) { %> 
             <div class="new-product">
