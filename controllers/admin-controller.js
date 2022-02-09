@@ -44,7 +44,7 @@ async function getUpdateProduct(req, res, next){
     try {
         const product = await Product.findProductById(req.params.id); //values entered in the url
         res.render('admin/products/update-product', {product: product});
-        console.log(product);
+        // console.log(product);
     } catch (error) {
         next(error);
         return;
@@ -99,7 +99,7 @@ async function updateOrder(req, res, next){
     const orderId = req.params.id;
     const newStatus = req.body.newStatus;
 
-    console.log(newStatus);
+    // console.log(newStatus);
     try {
         const order = await Order.findOrdersById(orderId);
         order.status = newStatus;

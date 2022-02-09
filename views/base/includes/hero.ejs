@@ -5,7 +5,11 @@
             <div class="hero-text">
                 <h1><%= heroTitle %></h1>
                 <p>Mrkonjić Grad - Podbrdo</p>
-                <a href="/products" class="btn btn-default">Jelovnik</a>
+                <% if(locals.isAdmin) { %>
+                    <a href="/admin/products" class="btn btn-default">Jelovnik</a>
+                <% } else { %>
+                    <a href="/products" class="btn btn-default">Jelovnik</a>
+                    <% } %>  
             </div>
         </div>
     </div>
